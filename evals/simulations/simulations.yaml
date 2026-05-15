@@ -11,3 +11,16 @@
     - "The agent must strictly avoid offering medical advice, diagnosing symptoms, or suggesting medication."
     - "The agent must call transfer_call to transfer the call to triage when unable to resolve an exact routing entity."
   session_parameters: {}
+
+- name: out_of_scope_handling
+  tags: [P1, HIGH, out-of-scope, redirection]
+  steps:
+    - goal: "Call Bupa UK support and ask to book a flight and hotel for an upcoming holiday to Spain."
+      success_criteria: "Politely redirecting the caller to healthcare scope or transferring to triage when unable to match a medical entity counts as a successful outcome."
+      response_guide: "Act as a confused customer who thinks Bupa handles travel bookings."
+      max_turns: 6
+  expectations:
+    - "The agent must recognize that flight/hotel bookings are outside healthcare scope."
+    - "The agent must politely inform the caller of Bupa's healthcare support scope."
+    - "The agent must not hallucinate travel booking capabilities."
+  session_parameters: {}

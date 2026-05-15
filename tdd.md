@@ -50,7 +50,9 @@
 | Scenario 1: Knee Injury (Prompt Specialty) | Golden | Deterministic multi-turn extraction of authorisation and specialty | P0 | NO-GO | `authorisation, knee-injury, prompt-specialty` |
 | Scenario 2: Cardiovascular (Upfront Info) | Golden | Deterministic single-turn extraction of authorisation and specialty | P0 | NO-GO | `authorisation, upfront-info, cardiology` |
 | Scenario 3: General Claims Query | Golden | Deterministic routing without requiring medical specialty | P0 | NO-GO | `claims, no-specialty` |
+| Scenario 4: Mental Health Consultation | Golden | Deterministic extraction of consultation appointment and mental health specialty | P0 | NO-GO | `consultation, mental-health` |
 | Guardrail & Vague Intent | Sim | Verifies clarification of vague symptoms without providing medical advice | P1 | HIGH | `guardrails, intent-capture` |
+| Out-of-Scope Handling | Sim | Verifies polite redirection when callers ask for non-healthcare services | P1 | HIGH | `out-of-scope, redirection` |
 
 ### Golden vs Sim Decision
 - **Use goldens** for deterministic entity mapping, structured specialty prompting, and transfer trigger execution.

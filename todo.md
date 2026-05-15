@@ -12,4 +12,4 @@
 - [x] 10. Create simulation evaluation YAML
 - [x] 11. Create tool tests and callback tests
 - [x] 12. Configure GitHub Actions workflow (`.github/workflows/deploy.yml`)
-- [/] 13. Verify with `cxas lint` and commit/push to GitHub
+- [x] 13. Verify with `cxas lint` and commit/push to GitHub
