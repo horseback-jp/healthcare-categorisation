@@ -1,0 +1,42 @@
+common_session_parameters:
+  authorisation_type: ""
+  appointment_type: ""
+  medical_specialty: ""
+  caller_intent: ""
+  _action_trigger: ""
+  no_match_counter: "0"
+  no_input_counter: "0"
+  api_failed: "false"
+
+conversations:
+  - conversation: scenario_1_knee_injury
+    session_parameters: {}
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Hello, and welcome to Bupa UK. I'm your digital assistant. How can I help you today?"
+      - user: "Hi there, I need to get a pre-authorisation sorted out for an upcoming hospital visit."
+        agent: "I can certainly help get that sorted. To ensure I route your call to the correct specialist team, could you tell me what type of medical condition or specialty this relates to?"
+        tool_calls:
+          - action: medical_entity_lookup
+            args:
+              user_utterance: "Hi there, I need to get a pre-authorisation sorted out for an upcoming hospital visit."
+      - user: "I've got a bad knee injury and need some surgery on it."
+        agent: "Thank you. I have the details for your Preauthorisation regarding Musculoskeletal (MSK). I am transferring you to our specialist team now. Please hold the line."
+        tool_calls:
+          - action: medical_entity_lookup
+            args:
+              user_utterance: "I've got a bad knee injury and need some surgery on it."
+          - action: transfer_call
+            args:
+              transfer_destination: "specialist"
+              summary:
+                $matchType: "ignore"
+                $matchValue: ""
+                $originalValue: ""
+          - action: end_session
+            args:
+              session_escalated: true
+    expectations:
+      - "The agent must identify authorisation intent and prompt for missing medical specialty."
+      - "The agent must map knee injury to Musculoskeletal (MSK) and transfer to specialist queue."
+    tags: [P0, NO-GO, authorisation, knee-injury, prompt-specialty]

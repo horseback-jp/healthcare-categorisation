@@ -1,0 +1,47 @@
+name: Deploy GECX Agent to Production
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  deploy:
+    name: Lint & Deploy to GECX
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # Required for Workload Identity Federation
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud via Workload Identity Federation
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install CXAS SDK & CLI
+        run: |
+          python -m pip install --upgrade pip
+          pip install cxas-scrapi
+
+      - name: Lint Agent Configuration
+        run: |
+          cxas lint --app-dir cxas_app/bupa_voice_assistant
+
+      - name: Push Agent to Production GECX App
+        run: |
+          cxas push --app-dir cxas_app/bupa_voice_assistant \
+            --to projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 \
+            --project-id ces-demo-emea --location us

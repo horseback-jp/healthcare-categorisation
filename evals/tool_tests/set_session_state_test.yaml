@@ -1,0 +1,14 @@
+tests:
+  - name: set_session_state_success
+    tool: set_session_state
+    args:
+      _action_trigger: "transfer_specialist"
+    variables: {}
+    expectations:
+      response:
+        - path: "$.result.status"
+          operator: equals
+          value: "success"
+        - path: "$.result.updated_variables._action_trigger"
+          operator: equals
+          value: "transfer_specialist"

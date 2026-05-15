@@ -1,0 +1,17 @@
+tests:
+  - name: lookup_msk_success
+    tool: medical_entity_lookup
+    args:
+      user_utterance: "I have a bad knee injury"
+    variables: {}
+    expectations:
+      response:
+        - path: "$.result.status"
+          operator: equals
+          value: "success"
+        - path: "$.result.matches[0].Entity"
+          operator: equals
+          value: "medical_specialty"
+        - path: "$.result.matches[0].Value"
+          operator: equals
+          value: "Musculoskeletal (MSK)"

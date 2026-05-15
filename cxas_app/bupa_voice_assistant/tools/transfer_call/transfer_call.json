@@ -1,0 +1,10 @@
+{
+    "name": "transfer_call",
+    "pythonFunction": {
+        "name": "transfer_call",
+        "pythonCode": "tools/transfer_call/python_function/python_code.py",
+        "description": "Signals transfer to the specialist team, billing team, or triage queue. Sets internal trigger for the before_model_callback to execute deterministic handoff."
+    },
+    "executionType": "SYNCHRONOUS",
+    "displayName": "transfer_call"
+}

@@ -1,0 +1,63 @@
+{
+    "name": "bupa_voice_assistant",
+    "displayName": "bupa_voice_assistant",
+    "description": "Bupa UK Intelligent Routing & Pre-Authorisation Agent",
+    "rootAgent": "bupa_voice_assistant",
+    "tools": [
+        "set_session_state",
+        "medical_entity_lookup",
+        "transfer_call",
+        "end_session"
+    ],
+    "modelSettings": {
+        "model": "gemini-3.1-flash-live"
+    },
+    "languageSettings": {
+        "defaultLanguageCode": "en-GB"
+    },
+    "timeZoneSettings": {
+        "timeZone": "Europe/London"
+    },
+    "audioProcessingConfig": {
+        "synthesizeSpeechConfigs": {
+            "en-GB": {
+                "voice": "en-GB-Chirp3-HD-Zephyr",
+                "speakingRate": 1.0
+            }
+        },
+        "bargeInConfig": {
+            "bargeInAwareness": true
+        }
+    },
+    "defaultChannelProfile": {},
+    "loggingSettings": {
+        "conversationLoggingSettings": {},
+        "evaluationAudioRecordingConfig": {
+            "gcsBucket": "gs://ces-demo-eval-audio"
+        }
+    },
+    "toolExecutionMode": "PARALLEL",
+    "evaluationMetricsThresholds": {
+        "goldenEvaluationMetricsThresholds": {
+            "turnLevelMetricsThresholds": {
+                "semanticSimilaritySuccessThreshold": 3,
+                "overallToolInvocationCorrectnessThreshold": 1
+            },
+            "toolMatchingSettings": {
+                "extraToolCallBehavior": "ALLOW"
+            }
+        },
+        "goldenHallucinationMetricBehavior": "DISABLED"
+    },
+    "variableDeclarations": [
+        {"name": "authorisation_type", "description": "Matched authorisation type entity", "schema": {"type": "STRING", "default": ""}},
+        {"name": "appointment_type", "description": "Matched appointment type entity", "schema": {"type": "STRING", "default": ""}},
+        {"name": "medical_specialty", "description": "Matched medical specialty entity", "schema": {"type": "STRING", "default": ""}},
+        {"name": "claim_query", "description": "Matched claim query entity", "schema": {"type": "STRING", "default": ""}},
+        {"name": "caller_intent", "description": "Spoken reason for call / primary intent", "schema": {"type": "STRING", "default": ""}},
+        {"name": "_action_trigger", "description": "Internal trigger for deterministic callback actions", "schema": {"type": "STRING", "default": ""}},
+        {"name": "no_match_counter", "description": "Counts consecutive failed entity lookup attempts", "schema": {"type": "STRING", "default": "0"}},
+        {"name": "no_input_counter", "description": "Counts consecutive silence / no-input turns", "schema": {"type": "STRING", "default": "0"}},
+        {"name": "api_failed", "description": "Flag indicating API failure in callbacks", "schema": {"type": "STRING", "default": "false"}}
+    ]
+}

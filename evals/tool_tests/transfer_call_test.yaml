@@ -1,0 +1,18 @@
+tests:
+  - name: transfer_call_success
+    tool: transfer_call
+    args:
+      transfer_destination: "specialist"
+      summary: "Knee injury - MSK"
+    variables: {}
+    expectations:
+      response:
+        - path: "$.result.status"
+          operator: equals
+          value: "success"
+        - path: "$.result.transfer_destination"
+          operator: equals
+          value: "specialist"
+        - path: "$.result.summary"
+          operator: equals
+          value: "Knee injury - MSK"

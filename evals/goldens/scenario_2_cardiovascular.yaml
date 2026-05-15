@@ -1,0 +1,36 @@
+common_session_parameters:
+  authorisation_type: ""
+  appointment_type: ""
+  medical_specialty: ""
+  caller_intent: ""
+  _action_trigger: ""
+  no_match_counter: "0"
+  no_input_counter: "0"
+  api_failed: "false"
+
+conversations:
+  - conversation: scenario_2_cardiovascular
+    session_parameters: {}
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Hello, and welcome to Bupa UK. I'm your digital assistant. How can I help you today?"
+      - user: "Hello, my doctor said I need to get approval for some tests related to cardiovascular disease."
+        agent: "Thank you. I have the details for your Preauthorisation regarding Cardiology. I am transferring you to our specialist team now. Please hold the line."
+        tool_calls:
+          - action: medical_entity_lookup
+            args:
+              user_utterance: "Hello, my doctor said I need to get approval for some tests related to cardiovascular disease."
+          - action: transfer_call
+            args:
+              transfer_destination: "specialist"
+              summary:
+                $matchType: "ignore"
+                $matchValue: ""
+                $originalValue: ""
+          - action: end_session
+            args:
+              session_escalated: true
+    expectations:
+      - "The agent must capture authorisation and cardiology specialty upfront in a single turn."
+      - "The agent must transfer immediately without prompting for specialty."
+    tags: [P0, NO-GO, authorisation, upfront-info, cardiology]
