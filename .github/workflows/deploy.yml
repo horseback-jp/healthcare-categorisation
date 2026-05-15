@@ -45,3 +45,10 @@ jobs:
           cxas push --app-dir cxas_app/bupa_voice_assistant \
             --to projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 \
             --project-id ces-demo-emea --location us
+
+      - name: Push Golden Evaluations to Production GECX App
+        run: |
+          cxas push-eval --app-name projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 --file evals/goldens/scenario_1_knee_injury.yaml
+          cxas push-eval --app-name projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 --file evals/goldens/scenario_2_cardiovascular.yaml
+          cxas push-eval --app-name projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 --file evals/goldens/scenario_3_claims.yaml
+          cxas push-eval --app-name projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 --file evals/goldens/scenario_4_mental_health.yaml
