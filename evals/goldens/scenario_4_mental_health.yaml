@@ -1,0 +1,37 @@
+common_session_parameters:
+  authorisation_type: ""
+  appointment_type: ""
+  medical_specialty: ""
+  claim_query: ""
+  caller_intent: ""
+  _action_trigger: ""
+  no_match_counter: "0"
+  no_input_counter: "0"
+  api_failed: "false"
+
+conversations:
+  - conversation: scenario_4_mental_health
+    session_parameters: {}
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Hello, and welcome to Bupa UK. I'm your digital assistant. How can I help you today?"
+      - user: "Hi, I'd like to book an initial visit with a psychology specialist."
+        agent: "Thank you. I have the details for your Consultation regarding Mental Health. I am transferring you to our specialist team now. Please hold the line."
+        tool_calls:
+          - action: medical_entity_lookup
+            args:
+              user_utterance: "Hi, I'd like to book an initial visit with a psychology specialist."
+          - action: transfer_call
+            args:
+              transfer_destination: "specialist"
+              summary:
+                $matchType: "ignore"
+                $matchValue: ""
+                $originalValue: ""
+          - action: end_session
+            args:
+              session_escalated: true
+    expectations:
+      - "The agent must map initial visit to Consultation appointment_type and psychology to Mental Health specialty."
+      - "The agent must transfer immediately to the specialist queue."
+    tags: [P0, NO-GO, consultation, mental-health]
