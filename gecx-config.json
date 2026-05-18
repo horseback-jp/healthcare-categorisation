@@ -1,7 +1,7 @@
 {
   "gcp_project_id": "ces-demo-emea",
   "location": "us",
-  "app_name": "bupaIntelligentRouting",
+  "app_name": "evergreenIntelligentRouting",
   "deployed_app_id": "8c3b245b-41e4-4c61-b0f9-10e6bcfcb389",
   "app_dir": "cxas_app/",
   "model": "gemini-3.1-flash-live",

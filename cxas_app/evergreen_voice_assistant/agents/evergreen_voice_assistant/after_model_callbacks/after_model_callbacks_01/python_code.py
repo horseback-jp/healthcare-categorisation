@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-after_model_callback — Bupa Intelligent Routing Agent
+after_model_callback — Evergreen Healthcare Intelligent Routing Agent
 
 PURPOSE:
     Injects farewell/transfer text before end_session when the LLM calls end_session silently.
@@ -21,7 +21,7 @@ PURPOSE:
 
 from typing import Optional
 
-FAREWELL_TEXT = "Thank you for calling Bupa UK. Transferring you now. Please hold the line."
+FAREWELL_TEXT = "Thank you for calling Evergreen Healthcare. Transferring you now. Please hold the line."
 
 
 def after_model_callback(callback_context: CallbackContext, llm_response: LlmResponse) -> Optional[LlmResponse]:

@@ -14,7 +14,7 @@ conversations:
     session_parameters: {}
     turns:
       - user: "<event>welcome</event>"
-        agent: "Hello, and welcome to Bupa UK. I'm your digital assistant. How can I help you today?"
+        agent: "Hello, and welcome to Evergreen Healthcare. I'm your digital assistant. How can I help you today?"
       - user: "Hi, I sent in a receipt for some dental work last week and I just want to check the status of my claim."
         agent: "Thank you. I have the details for your Claim query. I am transferring you to our billing and claims team now. Please hold the line."
         tool_calls:

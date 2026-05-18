@@ -1,8 +1,8 @@
 {
-    "name": "bupa_voice_assistant",
-    "displayName": "bupa_voice_assistant",
-    "description": "Bupa UK Intelligent Routing & Pre-Authorisation Agent",
-    "rootAgent": "bupa_voice_assistant",
+    "name": "evergreen_voice_assistant",
+    "displayName": "evergreen_voice_assistant",
+    "description": "Evergreen Healthcare Intelligent Routing & Pre-Authorisation Agent",
+    "rootAgent": "evergreen_voice_assistant",
     "tools": [
         "set_session_state",
         "medical_entity_lookup",

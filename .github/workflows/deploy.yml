@@ -38,11 +38,11 @@ jobs:
 
       - name: Lint Agent Configuration
         run: |
-          cxas lint --app-dir cxas_app/bupa_voice_assistant
+          cxas lint --app-dir cxas_app/evergreen_voice_assistant
 
       - name: Push Agent to Production GECX App
         run: |
-          cxas push --app-dir cxas_app/bupa_voice_assistant \
+          cxas push --app-dir cxas_app/evergreen_voice_assistant \
             --to projects/ces-demo-emea/locations/us/apps/8c3b245b-41e4-4c61-b0f9-10e6bcfcb389 \
             --project-id ces-demo-emea --location us
 
