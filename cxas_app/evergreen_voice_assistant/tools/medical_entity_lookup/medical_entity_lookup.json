@@ -3,7 +3,7 @@
     "pythonFunction": {
         "name": "medical_entity_lookup",
         "pythonCode": "tools/medical_entity_lookup/python_function/python_code.py",
-        "description": "Takes the caller's spoken reason for calling and maps it to official Bupa routing entities (authorisation_type, appointment_type, medical_specialty)."
+        "description": "Takes the caller's spoken reason for calling and maps it to official Evergreen Healthcare routing entities (authorisation_type, appointment_type, medical_specialty)."
     },
     "executionType": "SYNCHRONOUS",
     "displayName": "medical_entity_lookup"

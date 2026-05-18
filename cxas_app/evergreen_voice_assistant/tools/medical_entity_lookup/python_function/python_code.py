@@ -16,12 +16,12 @@
 medical_entity_lookup — Entity Mapping Tool
 
 PURPOSE:
-    Takes caller utterance and maps it to official Bupa routing entities using an embedded CSV knowledge base.
+    Takes caller utterance and maps it to official Evergreen Healthcare routing entities using an embedded CSV knowledge base.
 """
 
 
 def medical_entity_lookup(user_utterance: str = "") -> dict:
-    """Analyzes user utterance and maps it to official Bupa entities.
+    """Analyzes user utterance and maps it to official Evergreen Healthcare entities.
 
     Args:
         user_utterance: Spoken response from the user.

@@ -1,0 +1,18 @@
+{
+    "name": "evergreen_voice_assistant",
+    "displayName": "evergreen_voice_assistant",
+    "description": "Evergreen Healthcare Intelligent Routing & Pre-Authorisation Agent",
+    "instruction": "agents/evergreen_voice_assistant/instruction.txt",
+    "tools": [
+        "set_session_state",
+        "medical_entity_lookup",
+        "transfer_call",
+        "end_session"
+    ],
+    "beforeModelCallbacks": [
+        {"pythonCode": "agents/evergreen_voice_assistant/before_model_callbacks/before_model_callbacks_01/python_code.py"}
+    ],
+    "afterModelCallbacks": [
+        {"pythonCode": "agents/evergreen_voice_assistant/after_model_callbacks/after_model_callbacks_01/python_code.py"}
+    ]
+}

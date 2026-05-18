@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-before_model_callback — Bupa Intelligent Routing Agent
+before_model_callback — Evergreen Healthcare Intelligent Routing Agent
 
 PURPOSE:
     Implements deterministic transfer interception and silence handling.
